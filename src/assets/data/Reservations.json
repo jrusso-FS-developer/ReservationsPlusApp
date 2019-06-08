@@ -1,0 +1,6 @@
+[
+  {"id": 0, "name": "Gabby Chatham", "partySize": 4, "dateAndTime": "6/6/2019, 10:45:00 AM", "status": { "id": 3, "name": "Expired"}},
+  {"id": 1, "name": "Justin Russo", "partySize": 2, "dateAndTime": "6/6/2019, 11:00:00 AM", "status": { "id": 0, "name": "Fulfilled"}},
+  {"id": 2, "name": "Ryan Gosling", "partySize": 20, "dateAndTime": "6/6/2019, 11:30:00 AM", "status": { "id": 1, "name": "Cancelled"}},
+  {"id": 3, "name": "Lisa Black", "partySize": 1, "dateAndTime": "6/6/2019, 11:45:00 AM", "status": { "id": 2, "name": "Active"}}
+]
