@@ -12,54 +12,46 @@
     <div class="reservations-header">
       <div class="width-1024-px inline-flex">
         <div class="width-500-px inline-flex">
-          <div class="padding-left-10">
-            <div class="app-table">
-              <div class="app-row">
-                <div class="app-cell" style="vertical-align:middle; padding: 1px 3px 0 0;">
-                  <span class="cursor-pointer" (click)="toggleSelect(true)">
-                    <fa-icon [icon]="['far', 'square']" *ngIf="!selectAll"></fa-icon>
-                    <fa-icon [icon]="['far', 'check-square']" *ngIf="selectAll"></fa-icon>
-                  </span>
-                </div>
-                <div class="app-cell">
-                  <span class="cursor-pointer" (click)="toggleSelect(true)">
-                    select all
-                  </span>
-                </div>
+          <div class="app-table padding-right-10 cursor-pointer" (click)="toggleSelect(true)" *ngIf="reservations.length > 0">
+            <div class="app-row">
+              <div class="app-cell" style="vertical-align:middle; padding: 1px 5px 0 18px;">
+                <fa-icon [icon]="['far', 'square']" *ngIf="!selectAll"></fa-icon>
+                <fa-icon [icon]="['far', 'check-square']" *ngIf="selectAll"></fa-icon>
+              </div>
+              <div class="app-cell">
+                select all
               </div>
             </div>
           </div>
-          <div class="padding-left-10">
-            <div class="app-table">
-              <div class="app-row">
-                <div class="app-cell" style="vertical-align:middle; padding: 1px 3px 0 0;">
-                  <span class="cursor-pointer" (click)="cancel()">
-                    <fa-icon [icon]="['fas', 'times-circle']"></fa-icon>
-                  </span>
-                </div>
-                <div class="app-cell">
-                  <span class="cursor-pointer" (click)="cancel()"> cancel </span>
-                </div>
+          <div class="app-table padding-left-10 padding-right-10 cursor-pointer" (click)="updateStatus('Cancelled')" *ngIf="reservations.length > 0" style="border-left: solid white 1px;">
+            <div class="app-row">
+              <div class="app-cell" style="vertical-align:middle; padding: 1px 5px 0 0;">
+                <fa-icon [icon]="['fas', 'times-circle']"></fa-icon>
+              </div>
+              <div class="app-cell">
+                cancel
               </div>
             </div>
           </div>
-          <div class="padding-left-10">
-            <span class="cursor-pointer" (click)="fulfill()">
-              <fa-icon [icon]="['fas', 'thumbs-up']"></fa-icon> fulfill
-            </span>
+          <div class="app-table padding-right-20 cursor-pointer" (click)="updateStatus('Fulfilled')" *ngIf="reservations.length > 0">
+            <div class="app-row">
+              <div class="app-cell" style="vertical-align:middle; padding: 0 5px 0 0;">
+                <fa-icon [icon]="['fas', 'thumbs-up']"></fa-icon>
+              </div>
+              <div class="app-cell">
+                fulfill
+              </div>
+            </div>
           </div>
         </div>
         <div style="width: 524px;">
-          <div class="padding-right-8 float-right">
-            <div class="app-table">
+          <div class="padding-right-8">
+            <div class="app-table padding-right-10 cursor-pointer float-right" (click)="openAddModal()">
               <div class="app-row">
-                <div class="app-cell" style="vertical-align:middle; padding: 1px 3px 0 0;">
-                  <span class="cursor-pointer" (click)="add()">
-                    <fa-icon [icon]="['fas', 'plus-circle']" style="font-size: 18px;"></fa-icon>
-                  </span>
+                <div class="app-cell" style="vertical-align:middle; padding: 1px 5px 0 0;">
+                  <fa-icon [icon]="['fas', 'plus-circle']"></fa-icon>
                 </div>
-                <div class="app-cell">
-                  <span class="cursor-pointer" (click)="openAddModal()"> add </span>
+                <div class="app-cell"> add
                 </div>
               </div>
             </div>
@@ -69,38 +61,55 @@
     </div>
     <div class="reservations-body">
       <div class="reservations-list">
-        <div class="reservations-list-header app-table">
-          <div class="app-row">
-            <div class="app-cell padding-left-5" style="width: 24px;">
+        <div class="reservations-list-body app-table">
+          <div class="app-row reservations-list-header">
+            <div class="app-cell bottom-line" style="max-width:48px; width:48px;">
             </div>
-            <div class="app-cell" style="width: 966px; font-size: 18px;">
-              <span *ngIf="reservations.length === 0">no reservations to show</span>
+            <div class="app-cell bottom-line left-align-content" style="max-width:350px; width:350px;">
+              name
+            </div>
+            <div class="app-cell bottom-line left-align-content" style="max-width:350px; width:350px;">
+              date and time
+            </div>
+            <div class="app-cell bottom-line left-align-content" style="max-width:75px; width:75px;">
+              party size
+            </div>
+            <div class="app-cell bottom-line  center-content">
+              status
             </div>
           </div>
-        </div>
-        <div class="reservations-list-body app-table">
           <div class="app-row" *ngFor="let reservation of reservations">
             <div class="app-cell">
-              <span class="cursor-pointer" (click)="toggleSelect(false, reservation)">
-                <fa-icon [icon]="['far', 'square']" *ngIf="!selectAll && !reservation.selected"></fa-icon>
-                <fa-icon [icon]="['far', 'check-square']" *ngIf="selectAll || reservation.selected"></fa-icon>
+              <span class="cursor-pointer" (click)="toggleSelect(false, reservation)" *ngIf="reservation.status.id === 0">
+                <fa-icon [icon]="['far', 'square']" *ngIf="(!selectAll && !reservation.selected)"></fa-icon>
+                <fa-icon [icon]="['far', 'check-square']" *ngIf="(selectAll || reservation.selected)"></fa-icon>
               </span>
             </div>
-            <div class="app-cell">
+            <div class="app-cell left-align-content">
               {{reservation.name}}
             </div>
-            <div class="app-cell">
-              {{reservation.dateAndTime}}
+            <div class="app-cell left-align-content">
+              {{reservation.date.toLocaleDateString()}} {{reservation.time}}
             </div>
-            <div class="app-cell">
+            <div class="app-cell right-align-content">
               {{reservation.partySize}}
             </div>
-            <div class="app-cell">
+            <div class="app-cell center-content">
               {{reservation.status.name}}
             </div>
           </div>
         </div>
+        <div class="app-table">
+          <div class="app-row" *ngIf="reservations.length === 0">
+            <div class="app-cell" style="width: 1024px; font-size: 18px; padding: 20px;">
+              no reservations to show, click 'add' to get started.
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="reservations-footer">   
+        Reservations Plus <span style="font-size: 18px;">&copy;</span> 2019
     </div>
   </div>
 </div>

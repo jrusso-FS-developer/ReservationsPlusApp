@@ -2,9 +2,9 @@
   width: 100%;
   height: 100vh;
   text-align: left;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: Roboto,"Helvetica Neue",sans-serif;;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 400;
   color: #B02566;
 }
 
@@ -13,6 +13,10 @@
   height: 60px;
   width: 100%;
   display: inline-table;
+}
+
+.bottom-line {
+  border-bottom: solid 1px #B02566;
 }
 
 .logo {
@@ -34,12 +38,26 @@
   color: white;
   text-align: center;
   vertical-align: middle;
+  padding-top: 12px;  
+  border-radius: 5px;
+}
+
+.reservations-footer {
+  height: 32px;
+  width: 100%;
+  background-color: #B02566;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
   padding-top: 8px;
+  font-size: 14px;
+  border-radius: 5px;
 }
 
 .reservations-body {
   width: 100%;
   text-align: center;
+  padding-top: 5px;
 }
 
 .reservations-list-body {
@@ -48,29 +66,28 @@
 
   .reservations-list-body > .app-row {
     height: 28px;
-    border-bottom: solid #61012E 1px;
   }
 
     .reservations-list-body > .app-row > .app-cell {
       padding-top: 3px;
     }
 
-  .reservations-list-body > .app-row:nth-child(even) {
-    background-color: #dfaac3;
+  .reservations-list-body > .app-row:nth-child(odd) {
+    background-color: #eedde5;
   }
 
 .reservations-list {
   width: 1024px;
-  border: solid 1px #B02566;
-  border-top: 0;
   color: #61012E;
   display: inline-block;
-  padding: 5px;
+  min-height: calc(100vh - 170px);
 }
 
 .reservations-list-header {
   padding-right: 10px;
   width: 100%;
+  background-color: #B02566!important;
+  color: white;
 }
 
 .app-table {
@@ -83,6 +100,10 @@
 
 .app-cell {
   display: table-cell;
+}
+
+.padding-left-5 {
+  padding-left: 5px;
 }
 
 .padding-left-8 {
@@ -103,6 +124,10 @@
 
 .padding-right-10 {
   padding-right: 10px;
+}
+
+.padding-right-20 {
+  padding-right: 20px;
 }
 
 .padding-top-2 {
@@ -161,6 +186,14 @@
   text-align: center;
 }
 
+.left-align-content {
+  text-align: left;
+}
+
+.right-align-content {
+  text-align: right;
+}
+
 .inline-flex {
   display: inline-flex;
 }
@@ -174,4 +207,9 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+}
+
+.reservation-modal-main {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
 }

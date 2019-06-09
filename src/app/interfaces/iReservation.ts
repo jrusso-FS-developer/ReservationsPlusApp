@@ -2,7 +2,8 @@ interface IReservation {
   id: number;
   name: string;
   partySize: number;
-  dateAndTime: Date;
+  date: Date;
+  time: string;
   status: IReservationStatus;
   selected: boolean;
 }
