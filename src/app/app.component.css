@@ -39,7 +39,8 @@
   text-align: center;
   vertical-align: middle;
   padding-top: 12px;  
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .reservations-footer {
@@ -51,7 +52,8 @@
   vertical-align: middle;
   padding-top: 8px;
   font-size: 14px;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .reservations-body {
